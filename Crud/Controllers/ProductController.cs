@@ -9,11 +9,13 @@ namespace Crud.Controllers
     public class ProductController : Controller
     {
         private readonly ApplicationDbCotnext context;
+		private readonly IWebHostEnvironment environment;
 
-        public ProductController(ApplicationDbCotnext context)
+		public ProductController(ApplicationDbCotnext context, IWebHostEnvironment environment)
         {
             this.context = context;
-        }
+			this.environment = environment;
+		}
         public IActionResult Index()
         {
             var product = context.Products.OrderByDescending(p => p.Id).ToList();
@@ -38,7 +40,7 @@ namespace Crud.Controllers
             string newfileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
             newfileName = Path.GetExtension(productDto.ImageFile!.FileName);
 
-            string imageFullPath = Environment.GetFolderPath = "/products/ " + newfileName;
+            string imageFullPath = environment.WebRootPath + "/products/" + newfileName;
             using (var stream = System.IO.File.Create(imageFullPath))
             {
                 productDto.ImageFile.CopyTo(stream);
@@ -63,7 +65,7 @@ namespace Crud.Controllers
             {
                 return RedirectToAction("Index","Product");
             }
-            Product productDto = new ProductDto()
+            Product productDto = new()
             {
                 Name = product.Name,
                 Brand = product.Brand,
@@ -90,7 +92,7 @@ namespace Crud.Controllers
             {
                 return RedirectToAction("Index", "Product");
             }
-            Product productDto = ()
+            Product productDto = new()
             {
                 Name = product.Name,
                 Brand = product.Brand,
