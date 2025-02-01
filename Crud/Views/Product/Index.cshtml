@@ -5,7 +5,7 @@
 <h2 class="text-center mb-5">List of Products</h2>
 <div>
 	<div class="col">
-		<a class="btn btn-primary" asp-controller="Product" asp-action="Create">New Product</a>
+		<a class="btn btn-primary" asp-controller="Product" asp-action="Add">New Product</a>
 	</div>
 	<div class="col"</div>
 </div>
@@ -34,7 +34,7 @@
 				<td style="white-space:nowrap;">
 					<a class="btn btn-primary btn-sm" asp-controller="Product" asp-action="Edit" 
 					asp-route-id="@product.Id">Edit</a>
-					<a class="btn btn-danger btn-sm" asp-controller="Product" asp-action="Edit"
+					<a class="btn btn-danger btn-sm" asp-controller="Product" asp-action="Delete"
 					   asp-route-id="@product.Id">Delete</a>
 				</td>
 
