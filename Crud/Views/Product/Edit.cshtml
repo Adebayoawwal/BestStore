@@ -7,10 +7,9 @@
 
 		<form method="post" enctype="multipart/form-data">
 			<div class="row mb-3">
-				<label class="col-sm-4 col-form-label">Name</label>
+				<label class="col-sm-4 col-form-label">id</label>
 				<div class="col-sm-8">
-					<input class="form-control" asp-for="Name" />
-					<span asp-validation-for="Name" class="text-danger"></span>
+					<input class="form-control-plaintext" value="@ViewData["ProductId"]"/>
 				</div>
 			</div>
 			<div class="row mb-3">
@@ -52,7 +51,7 @@
 
 			<div class="row">
 				<div class="offset-sm-4 col-sm-4  d-grid">
-					<img src="/product/@ViewData" />
+					<img src="/products/@ViewData["ImagefileName"]" width="150" />
 				</div>
 			</div>
 
@@ -62,6 +61,12 @@
 					<input class="form-control" asp-for="ImageFile" />
 					<span asp-validation-for="ImageFile" class="text-danger"></span>
 				</div>
+
+				<div class="row mb-3">
+					<label class="col-sm-4 col-form-label">Create At</label>
+					<div class="col-sm-8">
+						<input class="form-control-plaintext" readonly value="@ViewData["CreatedAt"]" />
+					</div>
 			</div>
 			<div class="row">
 				<div class="offset-sm-4 col-sm-4 d-grid"></div>
